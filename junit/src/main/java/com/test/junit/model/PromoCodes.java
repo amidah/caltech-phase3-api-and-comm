@@ -19,23 +19,28 @@ public class PromoCodes {
 		promoCodesWithDiscounts.put(promoCodes.get(4), 0.25);
 	}
 
-	Double getDiscount(String promoCode) {
-		return promoCodesWithDiscounts.containsKey(promoCode) ? promoCodesWithDiscounts.get(promoCode) : 0.05;
+	public Double getDiscount(String promoCode) {
+		String prmCd = promoCode.toUpperCase();
+		return promoCodesWithDiscounts.containsKey(prmCd) ? promoCodesWithDiscounts.get(prmCd) : 0.05;
 	}
 
-	Double getAmountAfterDiscount(String promoCode, double amount) {
+	public Double getAmountAfterDiscount(String promoCode, double amount) {
 		return promoCodesWithDiscounts.containsKey(promoCode)
 				? (amount - amount * promoCodesWithDiscounts.get(promoCode))
 				: (amount - amount * 0.05);
 	}
 	
-	Double getDiscountAmountWithTaxes(String promoCode, double amount) {
+	public Double getDiscountAmountWithTaxes(String promoCode, double amount) {
 		double amountAfterDiscount = getAmountAfterDiscount(promoCode, amount);
 		return (amountAfterDiscount + 0.18 * amountAfterDiscount);
 	}
 	
 	public boolean checkPromoCodes(String promoCode) {
-		return promoCodes.contains(promoCode);
+		return promoCodes.contains(promoCode.toUpperCase());
+	}
+	
+	public String luckyPromoCode(int luckyNumber) {
+		return promoCodes.get(luckyNumber);
 	}
 
 }
