@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="con1" class="com.spring.estore.bean.Connection">  
+		<property name="url" value="jdbc:mysql://localhost/estore"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="Root@1234"></property>
+	</bean>
+
+	<bean id="con2" class="com.spring.estore.bean.Connection">  
+		<property name="url" value="jdbc:mysql://localhost/fooddelivery"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="Root@1234"></property>
+	</bean>
+	
+</beans>
