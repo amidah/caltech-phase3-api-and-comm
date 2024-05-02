@@ -4,16 +4,37 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="con1" class="com.spring.estore.bean.Connection">  
+	<bean id="con1" class="com.spring.estore.bean.Connection" init-method="myInit" destroy-method="myDestroy">  
 		<property name="url" value="jdbc:mysql://localhost/estore"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="Root@1234"></property>
 	</bean>
 
-	<bean id="con2" class="com.spring.estore.bean.Connection">  
+	<bean id="con2" class="com.spring.estore.bean.Connection" init-method="myInit" destroy-method="myDestroy">  
 		<property name="url" value="jdbc:mysql://localhost/fooddelivery"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="Root@1234"></property>
+	</bean>
+	
+	<bean id="addr" class="com.spring.estore.bean.Address">
+		<property name="adrsLine" value="2121 Street A"></property>
+		<property name="city" value="ABC"></property>
+		<property name="state" value="XYZ State"></property>
+		<property name="zipCode" value="110011"></property>
+	</bean>
+	
+	<bean id="restr" class="com.spring.estore.bean.Restaurant">
+		<property name="name" value="Johns Cafe"></property>
+		<property name="phone" value="+91-9999999999"></property>
+		<property name="operatingHours" value="10:00 to 22:00"></property>
+		<property name="ratings" value="4.5"></property>
+		
+		<!-- IOC Container will use Setter method in Resturant class for setting address in it-->
+		<!-- SETTER INJECTION -->
+		<!-- <property name="address" ref="addr"></property> -->
+		
+		<!-- CONSTRUCTOR INJECTION -->
+		<constructor-arg ref="addr"></constructor-arg>
 	</bean>
 	
 </beans>

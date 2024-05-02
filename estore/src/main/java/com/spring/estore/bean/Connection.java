@@ -40,4 +40,12 @@ public class Connection {
 		return "Connection [url=" + url + ", username=" + username + ", password=" + password + "]";
 	}
 	
+	public void myInit() {
+		System.out.println("[Connection] myInit Executed for User: " + username);
+	}
+	
+	public void myDestroy() {
+		System.out.println("[Connection] myDestroy Executed for User: " + username);
+	}
+	
 }
