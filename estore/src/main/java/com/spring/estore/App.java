@@ -4,7 +4,9 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.spring.estore.bean.Connection;
+import com.spring.estore.bean.Pizza;
 import com.spring.estore.bean.Restaurant;
+import com.spring.estore.bean.User;
 
 /**
  * Hello world!
@@ -53,9 +55,15 @@ public class App {
 //		ClassPathXmlApplicationContext ctx = (ClassPathXmlApplicationContext) context;
 //		ctx.close();
 		
-		Restaurant restr = (Restaurant) context.getBean("restr");
-		System.out.println(restr);
+//		Restaurant restr = (Restaurant) context.getBean("restr");
+//		System.out.println(restr);
 		
+//		Pizza pizza = (Pizza) context.getBean("pizza");
+//		System.out.println(pizza);
 		
+		User user = (User) context.getBean("user");
+		System.out.println(user);
+		
+	
 	}
 }

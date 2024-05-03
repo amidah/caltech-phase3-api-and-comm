@@ -1,5 +1,7 @@
 package com.spring.estore.bean;
 
+import java.util.List;
+
 public class Restaurant {
 	String name;
 	String phone;
@@ -7,6 +9,8 @@ public class Restaurant {
 	float ratings;
 	
 	Address address; // HAS-A Relationship | 1 to 1
+	
+	List<String> searchKeywords; // HAS-A Relationship | 1 to Many 
 	
 	public Restaurant() {
 		System.out.println("[Restaurant] Object Created");
@@ -57,13 +61,24 @@ public class Restaurant {
 
 	// Setter method here fulfills the dependency for address
 	public void setAddress(Address address) {
+		System.out.println("[Restaurant] setAddress Executed - SETTER INJECTION [1 to 1]");
 		this.address = address;
 	}
+	
+	
+	public List<String> getSearchKeywords() {
+		return searchKeywords;
+	}
 
+	public void setSearchKeywords(List<String> searchKeywords) {
+		System.out.println("[Restaurant] setSearchKeywords Executed - SETTER INJECTION [1 to Many]");
+		this.searchKeywords = searchKeywords;
+	}
+	
 	@Override
 	public String toString() {
 		return "Restaurant [name=" + name + ", phone=" + phone + ", operatingHours=" + operatingHours + ", ratings="
-				+ ratings + ", address=" + address + "]";
+				+ ratings + ", address=" + address + ", searchKeywords=" + searchKeywords + "]";
 	}
 
 }

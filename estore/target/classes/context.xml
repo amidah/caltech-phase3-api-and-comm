@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-		https://www.springframework.org/schema/beans/spring-beans.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- the below tag enables dependency injection via @Autowired annotation-->
+	<context:annotation-config/>
 
 	<bean id="con1" class="com.spring.estore.bean.Connection" init-method="myInit" destroy-method="myDestroy">  
 		<property name="url" value="jdbc:mysql://localhost/estore"></property>
@@ -35,6 +39,50 @@
 		
 		<!-- CONSTRUCTOR INJECTION -->
 		<constructor-arg ref="addr"></constructor-arg>
+		<property name="searchKeywords">
+			<list>
+				<value>Johns Cafe</value>
+				<value>Coffee Shop</value>
+				<value>Cake</value>
+				<value>Pastry</value>
+				<value>Pizza Shop</value>
+			</list>
+		</property>
 	</bean>
 	
+	<bean id="foodItem" class="com.spring.estore.bean.FoodItem">
+		<property name="name" value="Veggie Pizza"></property>
+		<property name="price" value="300"></property>
+	</bean>
+	
+	<bean id="pizza" class="com.spring.estore.bean.Pizza" parent="foodItem">
+		<property name="name" value="Veggie Supreme Pizza"></property>
+		<property name="price" value="600"></property>
+		<property name="size" value="10"></property>
+		<property name="toppings" value="cheese, bell peppers, corns, and brocoli"></property>
+	</bean>
+	
+	<bean id="user" class="com.spring.estore.bean.User">
+		<property name="name" value="John Watson"></property>
+		<property name="email" value="john@example.com"></property>
+		<!-- <property name="order" ref="order"></property> -->
+		<!-- <constructor-arg ref="order"></constructor-arg> -->
+	</bean>
+	
+	<bean id="order1" class="com.spring.estore.bean.Order" name="order1">
+		<property name="orderId" value="101"></property>
+		<property name="dateTimeStamp" value="20th May, 2023 20:00"></property>
+		<property name="amount" value="2000"></property>
+	</bean>
+	
+	<bean id="order2" class="com.spring.estore.bean.Order" name="order">
+		<property name="orderId" value="102"></property>
+		<property name="dateTimeStamp" value="25th May, 2023 20:00"></property>
+		<property name="amount" value="5000"></property>
+	</bean>
+	
+	
 </beans>
+
+
+
